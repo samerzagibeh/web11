@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title> home </title>
+</head>
+<style>
+  :root {
+  --bg: #f3f4f6;
+  --card-blue: #e8f0ff;
+  --card-pink: #ffeef2;
+}
+body{
+ margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg);
+}
+.navbar {
+  background: #000;
+  color: #fff;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo{
+ font-size: 22px;
+  font-weight: bold;
+
+
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 20px;
+  padding: 0;
+}
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.hero h1{
+ font-size: 32px;
+  margin-bottom: 25px;
+  color: #111827;
+ margin-left:25px ;
+}
+.search-box {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  margin-left: 25px;
+  margin-right: 45px;
+}
+.search-box input,
+.search-box select {
+   padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  min-width: 150px;
+}
+.search-box  button{
+background: linear-gradient(to right, #4f46e5, #4338ca); /* لون ثابت */
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+
+
+  transition: none; 
+  outline: none;
+  box-shadow: none;
+}
+
+
+.search-box button:hover {
+background: linear-gradient(to right, #4f46e5, #4338ca);
+}
+.btn {
+  background: #4f46e5;
+  padding: 8px 15px;
+  border-radius: 6px;
+  color: white;
+  text-decoration: none;
+}
+.cards {
+  display: flex;
+  flex-wrap: wrap;            /* يسمح بالكروت بالانتقال للسطر إذا الشاشة صغيرة */
+  gap: 20px;                  /* مسافة بين الكروت */
+  padding: 20px;              /* padding مناسب */
+  justify-content: flex-start; /* أو center حسب رغبتك */
+}
+
+.card {
+  flex: 0 1 calc(33.33% - 20px); /* كل كرت ياخد ثلث العرض ناقص المسافة */
+  padding: 20px;
+  border-radius: 20px;
+  box-sizing: border-box;     /* يحسب padding ضمن الحجم */
+  background: #e8f0ff;        /* مثال كرت أزرق */
+}
+
+.card h3 {
+  margin: 0 0 10px;
+}
+
+.card p {
+  margin: 0 0 15px;
+  color: #6b7280;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.blue {
+  background: var(--card-blue);
+}
+
+.pink {
+  background: var(--card-pink);
+}
+.card-img{
+   width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+.book-btn {
+    background: #1d4ed8;   /* لون أزرق واضح */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+    
+}
+.book-btn:hover {
+    background: #2563eb; /* لون أزرق أفتح عند المرور */
+    transform: scale(1.05);
+}
+.card-footer {
+    display: flex;
+    justify-content: space-between; /* السعر على اليسار، الزر على اليمين */
+    align-items: center;
+    margin-top: 10px;
+}
+.modal {
+  display: none; /* مخفي بشكل افتراضي */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 30px;
+  border-radius: 15px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-content input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.modal-content button {
+  background: #1d4ed8;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background: #2563eb;
+}
+
+.close {
+  align-self: flex-end;
+  font-size: 22px;
+  cursor: pointer;
+}
+</style>
+
+
+<body>
+<nav class="navbar">
+  <div class="logo">Way Cars</div>
+
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Cars</a></li>
+    <li><a href="#">Dealers</a></li>
+    <li><a href="#">Message</a></li>
+    <li><a href="#">History</a></li>
+  </ul>
+
+  <div class="add-btn">+ add car</div>
+</nav>
+
+
+<section class="hero">
+  <h1>Drive the Car of your dreams</h1>
+
+  <div class="search-box">
+    <select>
+      <option>Car Brand</option>
+      <option>Porsche</option>
+    </select>
+
+    <select>
+      <option>Car Model</option>
+      <option>911</option>
+    </select>
+
+    <input type="text" placeholder="Pickup Location">
+    <input type="date">
+
+    <button>Search</button>
+  </div>
+</section>
+<section class="cards">
+  <div class="card blue">
+   
+    <img src="./photos/porsche 911.jpg" alt="Porsche 911" class="card-img">
+  <h3>porscshe 911</h3>
+    <p>Turbo S - 2021</p>
+    <div class="card-footer">
+    <div class="price">$950/day</div>
+
+    <button class="book-btn">book now</button>
+    </div>
+</div>
+     <div class="card blue">
+      <img src="./photos/2023_nissan_gt-r_img_7386-3-49156.webp" alt="Nissan GT-R" class="card-img">
+    <h3>Nissan GT-R 2023</h3>
+    <p>Nismo 3.8 V6</p>
+     <div class="card-footer">
+    <div class="price">$1260/day</div>
+    <button class="book-btn">book now</button>
+  </div>
+</div>
+   <div class="card pink">
+     <img src="./photos/corvet.jpg" alt="Nissan GT-R" class="card-img">
+    <h3>Chevrolet C8</h3>
+    <p>Corvette Stingray</p>
+     <div class="card-footer">
+    <div class="price">$800/day</div>
+    <button class="book-btn">book now</button>
+  </div>
+</div>
+<div id="paymentModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Visa Payment</h2>
+    <input type="text" placeholder="Card Number">
+    <input type="text" placeholder="Name on Card">
+    <input type="month" placeholder="Expiry Date">
+    <input type="text" placeholder="CVV">
+    <button id="payBtn">Pay</button>
+  </div>
+</div>
+
+</section>
+<script>
+const bookButtons = document.querySelectorAll(".book-btn");
+const modal = document.getElementById("paymentModal");
+const close = document.querySelector(".close");
+
+bookButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    modal.style.display = "block";
+  });
+});
+
+close.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+window.addEventListener("click", (e) => {
+  if(e.target == modal) {
+    modal.style.display = "none";
+  }
+});
+
+document.getElementById("payBtn").addEventListener("click", () => {
+  alert("تم الدفع بنجاح!"); 
+  modal.style.display = "none";
+});
+</script>
+</body>  
+
+
+
+
+</html>
